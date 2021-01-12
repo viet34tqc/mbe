@@ -1,0 +1,6 @@
+{
+	"scripts": {
+		"watch": "node-sass --output-style expanded --indent-type tab --indent-width 1 --source-map 0 -w sass -r -o .",
+		"zip": "git archive -o divi-child.zip --prefix=divi-child/ HEAD"
+	}
+}

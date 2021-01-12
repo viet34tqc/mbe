@@ -1,0 +1,16 @@
+/*
+ Theme Name:   Divi Child
+ Theme URI:    https://wpautolistings.com/themes/
+ Description:  Divi Child Theme
+ Author:       WPAutoListings
+ Author URI:   https://wpautolistings.com/
+ Template:     Divi
+ Version:      1.0.0
+*/
+
+/* Child Theme Custom CSS */
+
+@import 'variables-site/variables-site';
+@import 'mixins-master';
+@import 'archive';
+@import 'single-listing';
