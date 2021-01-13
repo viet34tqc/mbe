@@ -1,6 +1,7 @@
 .auto-listings .container > .content {
 	padding-top: 0;
-	&:before, &:after {
+	&:before,
+	&:after {
 		@include clearfix();
 	}
 	&:after {
@@ -32,7 +33,7 @@
 			.lSAction {
 				i {
 					padding: 36px 18px;
-					background-color: rgba(52,54,67,0.85);
+					background-color: rgba(52, 54, 67, 0.85);
 					font-weight: 600;
 					@include font-size(2.4);
 				}
@@ -62,14 +63,14 @@
 					max-width: 100%;
 					float: left;
 					&:before {
-						content: "";
+						content: '';
 						position: absolute;
 						top: 0;
 						bottom: 0;
 						left: 0;
 						right: 0;
 						box-shadow: 0 -8px 0px -5px $color__main inset;
-						transition: opacity .4s;
+						transition: opacity 0.4s;
 						opacity: 0;
 					}
 				}
@@ -272,15 +273,15 @@
 		.price {
 			display: none;
 		}
-		.at-a-glance {
-			table {
-				margin: 0;
-				background: #f8f8f8;
+		.at-a-glance__table {
+			display: grid;
+			@media (min-width: 480px) {
+				grid-template-columns: 1fr 1fr;
 			}
-			td {
-				padding: 8px 2px;
-			}
+			margin: 0;
 			span {
+				background: #f8f8f8;
+				padding: 8px 2px;
 				@include font-size(1.2);
 				display: flex;
 				justify-content: center;
@@ -288,6 +289,8 @@
 				color: $color__gray;
 				font-weight: 700;
 				padding: 5px;
+				border: 1px solid #e2e2e2;
+				margin: -1px 0 0 -1px;
 				i {
 					color: #999;
 					@include font-size(1.6);
@@ -347,7 +350,7 @@
 				color: $color__white;
 				font-weight: 700;
 				padding: 15px 0px;
-				transition: all .3s ease;
+				transition: all 0.3s ease;
 				border: 2px solid $color__main;
 				width: 100%;
 				text-transform: uppercase;
@@ -356,7 +359,7 @@
 					background-color: $color__white;
 					color: $color__main;
 					border: 2px solid $color__main;
-					transition: all .3s ease;
+					transition: all 0.3s ease;
 				}
 			}
 		}
@@ -388,7 +391,8 @@
 				@include font-size(2);
 				margin-bottom: 18px;
 			}
-			.address, .contact {
+			.address,
+			.contact {
 				padding: 0;
 				color: $color__gray;
 				line-height: inherit;
@@ -400,28 +404,18 @@
 		}
 	}
 }
-.auto-listings-single .has-sidebar {
-	width: 66%;
-}
-.auto-listings-single .sidebar {
-	width: 31.5%;
-	> div {
-		margin-bottom: 0;
+@media (min-width: 768px) {
+	.auto-listings-single .has-sidebar {
+		width: 66%;
 	}
-}
-@media (max-width: 767px) {
-	.auto-listings-single {
-		.has-sidebar {
-			.content {
-				.description {
-					ul {
-						column-count: 2;
-					}
-				}
-			}
+	.auto-listings-single .sidebar {
+		width: 31.5%;
+		> div {
+			margin-bottom: 0;
 		}
 	}
 }
+
 @media (max-width: 574px) {
 	.auto-listings-single {
 		.image-gallery {
@@ -466,4 +460,33 @@
 			}
 		}
 	}
+}
+
+.single-auto-listing {
+	#main-content .container:before {
+		display: none;
+	}
+	#left-area {
+		width: 100%;
+		padding: 0;
+		float: none;
+		.full-width.upper {
+			margin-bottom: 25px;
+		}
+		ul {
+			padding: 0;
+		}
+		.auto-listings-Tabs-panel {
+			padding: 25px;
+			table {
+				width: 100%;
+				padding: 0;
+				margin: 0;
+			}
+		}
+	}
+}
+
+.auto-listings-single .sidebar h3 {
+	margin: 16px 0 28px;
 }

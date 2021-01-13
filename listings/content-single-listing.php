@@ -4,7 +4,7 @@
  *
  * This template can be overridden by copying it to yourtheme/listings/content-single-listing.php.
  *
- * @package Auto Listings.
+ * @package CarListings
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -12,28 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<?php
-
-do_action( 'auto_listings_before_single_listing' );
-
-if ( post_password_required() ) {
-	echo get_the_password_form(); // wpcs xss: ok.
-	return;
-}
-?>
+<?php do_action( 'auto_listings_before_single_listing' ); ?>
 
 <div id="listing-<?php the_ID(); ?>" class="auto-listings-single listing">
-
-	<div class="full-width upper">
-
-		<?php
-		/**
-		 * @hooked auto_listings_template_single_title
-		 */
-		do_action( 'auto_listings_single_upper_full_width' );
-		?>
-
-	</div>
 
 	<div class="has-sidebar">
 
@@ -41,6 +22,8 @@ if ( post_password_required() ) {
 
 			<?php
 			/**
+			 * Slider
+			 *
 			 * @hooked auto_listings_template_single_gallery
 			 */
 			do_action( 'auto_listings_single_gallery' );
@@ -48,10 +31,28 @@ if ( post_password_required() ) {
 
 		</div>
 
+		<div class="full-width upper">
+
+			<?php
+			/**
+			 * Title
+			 *
+			 * @hooked auto_listings_template_single_title
+			 */
+			do_action( 'auto_listings_single_upper_full_width' );
+			?>
+			<?php if ( function_exists( 'auto_listings_price' ) ) : ?>
+				<h4><?php echo wp_kses_post( auto_listings_price() ); ?></h4>
+			<?php endif; ?>
+
+		</div>
+
 		<div class="content">
 
 			<?php
 			/**
+			 * Info single listing
+			 *
 			 * @hooked auto_listings_template_single_tagline
 			 * @hooked auto_listings_template_single_description
 			 * @hooked auto_listings_output_listing_tabs
@@ -68,7 +69,6 @@ if ( post_password_required() ) {
 		<?php
 		/**
 		 * @hooked auto_listings_template_single_at_a_glance
-		 * @hooked auto_listings_template_single_address
 		 * @hooked auto_listings_template_single_map
 		 * @hooked auto_listings_template_single_contact_form
 		 */
