@@ -69,3 +69,18 @@ add_filter( 'auto_listings_listings_shortcode_output', function( $output, $query
 	wp_reset_postdata();
 	return ob_get_clean();
 }, 10, 4 );
+
+add_action( 'wp_footer', function() {
+	if ( ! is_singular( 'auto-listing' ) ) {
+		return;
+	}
+	?>
+	<script>
+	jQuery(document).ready(function($) {
+		setTimeout(function() {
+		$(".single-auto-listing .auto-listings-tabs ul.tabs #tab-title-specifications, .single-auto-listing .auto-listings-tabs ul.tabs #tab-title-details").addClass("et_smooth_scroll_disabled");
+		}, 300);
+	});
+	</script>
+	<?php
+} );
