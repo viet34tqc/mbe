@@ -21,6 +21,11 @@ function divi_child_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'divi_child_scripts' );
 
+add_action( 'widgets_init', function() {
+	require get_stylesheet_directory(  ) . '/widgets/class-contact-info.php';
+	register_widget( 'AlContactInfo' );
+} );
+
 
 /**
  * Add at a glance to left section
@@ -84,3 +89,72 @@ add_action( 'wp_footer', function() {
 	</script>
 	<?php
 } );
+
+function auto_listings_get_social_share() {
+	return apply_filters(
+		'corify_social_share',
+		array(
+			'facebook'  => array(
+				'label' => esc_html__( 'Facebook', 'corify-addons' ),
+				'url'   => 'https://facebook.com/sharer/sharer.php?u=%s',
+			),
+			'twitter'   => array(
+				'label' => esc_html__( 'Twitter', 'corify-addons' ),
+				'url'   => 'https://twitter.com/intent/tweet?url=%s',
+			),
+			'linkedin'  => array(
+				'label' => esc_html__( 'LinkedIn', 'corify-addons' ),
+				'url'   => 'https://www.linkedin.com/shareArticle?mini=true&url=%s',
+			),
+			'pinterest' => array(
+				'label' => esc_html__( 'Pinterest', 'corify-addons' ),
+				'url'   => 'https://pinterest.com/pin/create/button/?url=%s',
+			),
+			'pocket'    => array(
+				'label' => esc_html__( 'Pocket', 'corify-addons' ),
+				'url'   => 'https://getpocket.com/save?url=%s',
+			),
+			'reddit'    => array(
+				'label' => esc_html__( 'Reddit', 'corify-addons' ),
+				'url'   => 'https://www.reddit.com/submit?url=%s',
+			),
+			'tumblr'    => array(
+				'label' => esc_html__( 'Reddit', 'corify-addons' ),
+				'url'   => 'https://www.tumblr.com/share/link?url=%s',
+			),
+			'mail'      => array(
+				'label' => esc_html__( 'Mail', 'corify-addons' ),
+				'url'   => 'mailto:?body=%s',
+			),
+		)
+	);
+}
+
+/**
+ * Social share.
+ *
+ * @param boolean $is_blog_article check if it's single post.
+ */
+function auto_listings_print_social_share() {
+	$selected_social_share = [ 'facebook','twitter','linkedin','tumblr','pinterest' ];
+	?>
+	<span class="corify-social-share">
+		<?php
+		$post_url          = get_the_permalink();
+		$social_share_list = auto_listings_get_social_share();
+		ob_start();
+		foreach ( $selected_social_share as $service ) :
+			$social_share_link = sprintf( $social_share_list[ $service ]['url'], $post_url );
+			?>
+			<a target="_blank"
+				class="social-share__item social-share--<?php echo esc_attr( $service ); ?>"
+				href="<?php echo esc_url( $social_share_link ); ?>"
+			>
+				<i class="icofont-<?php echo esc_attr( $service ); ?>"></i>
+			</a>
+			<?php
+		endforeach;
+		?>
+	</span>
+	<?php
+}

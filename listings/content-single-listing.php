@@ -47,6 +47,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		</div>
 
+		<?php auto_listings_print_social_share() ?>
+
 		<div class="content">
 
 			<?php

@@ -490,3 +490,55 @@
 .auto-listings-single .sidebar h3 {
 	margin: 16px 0 28px;
 }
+
+.corify-social-share {
+	display: flex;
+	flex-wrap: wrap;
+	margin: -12px -12px 0 0;
+	padding-bottom: 30px;
+	.social-share {
+		&__item {
+			border-radius: 2px;
+			display: block;
+			width: 30px;
+			height: 30px;
+			transition: 0.3s;
+			margin: 12px 12px 0 0;
+			text-decoration: none;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			i {
+				font-size: 14px;
+				color: #fff;
+			}
+			&:hover {
+				opacity: 0.6;
+			}
+		}
+		&--facebook {
+			background: #1b4e9b;
+		}
+		&--twitter {
+			background: #00aeef;
+		}
+		&--tumblr {
+			background: #2b4873;
+		}
+		&--pinterest {
+			background: #cb2027;
+		}
+		&--linkedin {
+			background: #0077b5;
+		}
+		&--pocket {
+			background: #ef4056;
+		}
+		&--reddit {
+			background: #ff4500;
+		}
+		&--mail {
+			background: #7d7d7d;
+		}
+	}
+}

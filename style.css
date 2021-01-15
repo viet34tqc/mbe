@@ -1071,6 +1071,67 @@
 	margin: 16px 0 28px;
 }
 
+.corify-social-share {
+	display: flex;
+	flex-wrap: wrap;
+	margin: -12px -12px 0 0;
+	padding-bottom: 30px;
+}
+
+.corify-social-share .social-share__item {
+	border-radius: 2px;
+	display: block;
+	width: 30px;
+	height: 30px;
+	transition: 0.3s;
+	margin: 12px 12px 0 0;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.corify-social-share .social-share__item i {
+	font-size: 14px;
+	color: #fff;
+}
+
+.corify-social-share .social-share__item:hover {
+	opacity: 0.6;
+}
+
+.corify-social-share .social-share--facebook {
+	background: #1b4e9b;
+}
+
+.corify-social-share .social-share--twitter {
+	background: #00aeef;
+}
+
+.corify-social-share .social-share--tumblr {
+	background: #2b4873;
+}
+
+.corify-social-share .social-share--pinterest {
+	background: #cb2027;
+}
+
+.corify-social-share .social-share--linkedin {
+	background: #0077b5;
+}
+
+.corify-social-share .social-share--pocket {
+	background: #ef4056;
+}
+
+.corify-social-share .social-share--reddit {
+	background: #ff4500;
+}
+
+.corify-social-share .social-share--mail {
+	background: #7d7d7d;
+}
+
 .auto-listings-items.mbe-listings {
 	background: #fff;
 	padding: 15px;
